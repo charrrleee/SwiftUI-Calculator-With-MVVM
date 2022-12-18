@@ -159,6 +159,11 @@ class ContentViewModel : ObservableObject {
         }
         
         handleReset()
-        userInputValue = String(val)
+        let valStr = String(format: "%.4f", val)
+        if valStr.contains(".0") {
+            userInputValue = valStr.replacingOccurrences(of: ".0", with: "")
+        } else {
+            userInputValue = valStr
+        }
     }
 }
